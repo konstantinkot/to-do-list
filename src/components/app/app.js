@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import AppHeader from '../app-header';
-
+import TodoList from '../todo-list';
+import SearchPanel from '../search-panel';
+import ItemStatusFilter from '../item-status-filter';
 import ItemAddForm from '../item-add-form';
 
 import './app.css';
@@ -113,7 +115,15 @@ export default class App extends Component {
       <div className="todo-app">
         <AppHeader toDo={toDoCount} done={doneCount}/>
 
-  
+        <div className="search-panel d-flex">
+          <SearchPanel
+            onSearchChange={this.onSearchChange}/>
+
+          <ItemStatusFilter
+            filter={filter}
+            onFilterChange={this.onFilterChange} />
+        </div>
+
         <TodoList
           items={ visibleItems }
           onToggleImportant={this.onToggleImportant}
